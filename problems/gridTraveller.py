@@ -7,7 +7,10 @@ Prompt:
   In how many ways can you travel to the goal on a grid with dimensions MxN?
 '''
 
-def numWaysToTravel(m, n):
+import time
+
+# This approach has exponential time complexity
+def numWaysToTravel_V1(m, n):
   queue = [(0, 0)]
   totalNumWays = 0
 
@@ -23,5 +26,26 @@ def numWaysToTravel(m, n):
       queue.append((i, j+1))
 
   return totalNumWays
-    
-print(numWaysToTravel(10, 10))
+
+# dynamic programing soln
+def numWaysToTravel_V2(m, n, cache = {}):
+  if m == 1 and n == 1:
+    return 1
+
+  if (m, n) in cache:
+    return cache[(m, n)]
+  
+  wayDown = numWaysToTravel_V2(m-1, n, cache) if m > 0 else 0
+  wayRight = numWaysToTravel_V2(m, n-1, cache) if n > 0 else 0
+  cache[(m, n)] = wayDown + wayRight
+  return cache[(m, n)]
+
+start = time.time()
+sol1 = numWaysToTravel_V1(12, 13)
+end = time.time()
+print(f'Sol1 without DP: result: {sol1}, time: {end - start} secs')
+
+start = time.time()
+sol2 = numWaysToTravel_V2(12, 13)
+end = time.time()
+print(f'Soln with DP - result: {sol2}, time: {end - start} secs')
