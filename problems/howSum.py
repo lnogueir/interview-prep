@@ -21,7 +21,7 @@ def howSum(targetSum, numbers, combination = [], cache = set([])):
     return None
 
   for n in numbers:
-    result = howSum(targetSum - n, numbers, [*combination, n])
+    result = howSum(targetSum - n, numbers, [*combination, n], cache)
     if result is not None:
       return result
     
@@ -30,4 +30,4 @@ def howSum(targetSum, numbers, combination = [], cache = set([])):
   cache.add(targetSum)
   return None
 
-print(howSum(300, [7, 14]))
+print(howSum(302, [2, 7, 14]))
