@@ -1,7 +1,7 @@
-#include "heaps.hpp"
+#include "data-structures/heaps.hpp"
 
 /**
- * Main function to test data structures
+ * Playground to test data structures
  */
 int main () {
   MaxHeap mh = MaxHeap();
@@ -10,8 +10,10 @@ int main () {
     mh.insert(item);
   }
 
-  while (mh.max()) {
+  while (!mh.empty()) {
     std::optional<Heap::Item> maxItem = mh.extractMax();
     std::cout << *maxItem << std::endl;
   }
+  
+  return 0;
 }

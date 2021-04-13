@@ -1,15 +1,16 @@
 BIN := bin
 STD := -std=c++17
+DS_PATH := data-structures
 
 test: all
-	./bin/main
+	./bin/playground
 
-all: bin heaps main
+all: bin heaps playground
 
-heaps: heaps.hpp
+heaps: $(DS_PATH)/heaps.hpp
 	g++ -c $(STD) $^ -o $(BIN)/$@.o
 
-main: main.cpp
+playground: playground.cpp
 	g++ $(STD) $^ -o $(BIN)/$@
 
 bin:
