@@ -21,18 +21,22 @@ class Heap {
 
   virtual void insert(Item item) = 0;
 
+  bool empty() const {
+    return heap.empty();
+  }
+
  protected:
   /**
-   * Swaps node with parent if needed
-   * @returns true if node was swapped, otherwise false.
+   * Corrects a single heap violation starting from leaf going upwards.
+   * @returns true if corrected a violation, false if no violation was found.
    */
-  virtual bool swapWithParent(int nodeIdx) = 0;
+  virtual bool bubbleUp(int nodeIdx) = 0;
 
   /**
-   * Updates parent node with children appropriately
-   * @returns idx of the node it update to. -1 if not updated
+   * Corrects a single heap violation starting from parent going downwards.
+   * @returns idx of the node which swap fixed violation, -1 if no violation was found.
    */
-  virtual int updateParent(int parentIdx) = 0;
+  virtual int bubbleDown(int parentIdx) = 0;
 
   std::vector<Item> heap;
 };
@@ -42,29 +46,29 @@ class MaxHeap final: public Heap {
   void insert(Item item) override{
     heap.push_back(item);
     int nodeIdx = heap.size();
-    while (swapWithParent(nodeIdx)) {
+    while (bubbleUp(nodeIdx)) {
       nodeIdx = nodeIdx / 2;
     }
   }
 
-  std::optional<Item> max() {
+  std::optional<Item> max() const {
     return heap.size() > 0 ? std::optional<Item>{heap[0]} : std::nullopt;
   }
 
   std::optional<Item> extractMax() {
     std::optional<Item> maxItem = max();
     if (maxItem) {
-      int parentIdx = 1;
-      while (parentIdx != -1) {
-        parentIdx = updateParent(parentIdx);
-      }
+      Item last = heap.back();
+      heap[0] = last;
       heap.pop_back();
+      int parentIdx = 1;
+      while ((parentIdx = bubbleDown(parentIdx)) != -1) {}
     }
 
     return maxItem;
   }
  private:
-  int updateParent(int parentIdx) override{
+  int bubbleDown(int parentIdx) override {
     int leftNodeIdx = 2*parentIdx;
     int rightNodeIdx = 2*parentIdx + 1;
     int actualParentIdx = parentIdx - 1;
@@ -75,14 +79,28 @@ class MaxHeap final: public Heap {
       return -1;
     }
 
-    bool isLeftMoreImportant = actualRightNodeIdx >= heap.size() || 
+    bool isLeftMoreImportantThanRight = actualRightNodeIdx >= heap.size() || 
                                heap[actualLeftNodeIdx].priority > heap[actualRightNodeIdx].priority;
 
-    heap[actualParentIdx] =  isLeftMoreImportant ? heap[actualLeftNodeIdx] : heap[actualRightNodeIdx];
-    return isLeftMoreImportant ? actualLeftNodeIdx : actualRightNodeIdx;
+    Item parentItem = heap[actualParentIdx];
+    if (isLeftMoreImportantThanRight) {
+      if (heap[actualParentIdx].priority < heap[actualLeftNodeIdx].priority) {
+        heap[actualParentIdx] = heap[actualLeftNodeIdx];
+        heap[actualLeftNodeIdx] = parentItem;
+        return leftNodeIdx;
+      }
+    } else {
+      if (heap[actualParentIdx].priority < heap[actualRightNodeIdx].priority) {
+        heap[actualParentIdx] = heap[actualRightNodeIdx];
+        heap[actualRightNodeIdx] = parentItem;
+        return rightNodeIdx;
+      }
+    }
+
+    return -1;
   }
 
-  bool swapWithParent(int nodeIdx) override{
+  bool bubbleUp(int nodeIdx) override {
     int parentIdx = nodeIdx / 2;
     int actualNodeIdx = nodeIdx - 1;
     int actualParentIdx = parentIdx - 1;
