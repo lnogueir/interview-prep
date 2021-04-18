@@ -40,12 +40,32 @@ def numWaysToTravel_DP(m, n, cache = {}):
   cache[(m, n)] = wayDown + wayRight
   return cache[(m, n)]
 
+
+def numWaysToTravel_tabulation(m, n):
+  table = [[0]*(n+1) for _ in range(m+1)] 
+  table[1][1] = 1
+
+  for i in range(len(table)):
+    for j in range(len(table[i])):
+      if i < len(table)-1:
+        table[i+1][j] += table[i][j]
+      
+      if j < len(table[i])-1:
+        table[i][j+1] += table[i][j]
+  return table[-1][-1]
+
+
 start = time.time()
 sol1 = numWaysToTravel(12, 10)
 end = time.time()
 print(f'Sol1 without DP: result: {sol1}, time: {end - start} secs')
 
 start = time.time()
-sol2 = numWaysToTravel_DP(12, 100)
+sol2 = numWaysToTravel_DP(180, 180)
 end = time.time()
-print(f'Soln with DP - result: {sol2}, time: {end - start} secs')
+print(f'Soln2 with DP - result: {sol2}, time: {end - start} secs')
+
+start = time.time()
+soln3 = numWaysToTravel_tabulation(180, 180)
+end = time.time()
+print(f'Soln3 with DP tabulation - result: {sol2}, time: {end - start} secs')
