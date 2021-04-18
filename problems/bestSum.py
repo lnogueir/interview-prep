@@ -24,14 +24,14 @@ def recurse(targetSum, numbers, combination = []):
 
   return None
 
-# This approach is incorrect.
+# Greedy approach. This only works on some sets of coins.
 # Why? Consider this input: bestSum(8, [1, 4, 5])
 # Should return [4, 4], but we are returning [5, 1, 1, 1]
 def bestSum(targetSum, numbers):
   numbers.sort(reverse=True)
   return recurse(targetSum, numbers)
 
-# This one is correct version
+# Correct optimal solution with dynamic programming
 def bestSum_V2(targetSum, numbers, cache = {}):
   if targetSum in cache:
     return cache[targetSum]
