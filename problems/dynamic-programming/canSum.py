@@ -41,8 +41,27 @@ def canSum_DP(targetSum, numbers, currentSum = 0, cache = set({})):
 
   return False
 
+def canSum_tabulation(targetSum, numbers):
+  table = [False] * (targetSum + 1)
+  table[0] = True
+  for n in range(targetSum+1):
+    if not table[n]:
+      continue
+
+    for num in numbers:
+      if n+num < targetSum+1:
+        table[n+num] = True
+
+  return table[-1]
+  
+
 
 print(canSum(700, [2, 4, 7]))
 print(canSum(7, [2, 4, 7]))
 print(canSum_DP(300, [14, 7, 7]))
+
+print(canSum_tabulation(700, [2, 4, 7]))
+print(canSum_tabulation(7, [2, 4, 7]))
+print(canSum_tabulation(300, [14, 7, 7]))
+
 
