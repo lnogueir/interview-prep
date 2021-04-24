@@ -5,7 +5,7 @@ array and a target and returns the index of target or -1 if not found.
 '''
 import math
 
-# recursive solution
+# Time: O(log(n)), Space: O(log(n))
 def helper(array, target, left, right):
   if left > right:
     return -1
@@ -19,6 +19,7 @@ def helper(array, target, left, right):
   
   return helper(array, target, left, mid-1)
 
+# recursive solution
 def search1(array, target):
   return helper(array, target, 0, len(array)-1)
 
