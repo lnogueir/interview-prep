@@ -7,7 +7,7 @@ test: all
 
 all: bin heaps playground
 
-heaps: $(DS_PATH)/heaps.hpp
+heaps: $(DS_PATH)/Heaps.hpp
 	g++ -c $(STD) $^ -o $(BIN)/$@.o
 
 playground: playground.cpp

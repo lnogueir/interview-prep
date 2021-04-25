@@ -1,4 +1,4 @@
-#include "data-structures/heaps.hpp"
+#include "data-structures/Heaps.hpp"
 
 /**
  * Playground to test data structures
