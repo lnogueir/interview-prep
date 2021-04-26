@@ -11,4 +11,5 @@ Quick links:
 - [Tips to get unstuck](https://www.byte-by-byte.com/stuck-on-coding-interview/)
 
 Number of questions by topic:
+
 ![Questions Chart](https://raw.githubusercontent.com/lnogueir/interview-prep/main/images/leetcodeQuestionsChart.PNG)
