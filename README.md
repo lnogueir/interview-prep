@@ -9,3 +9,6 @@ Quick links:
 - [FreeCodeCamp interview info](https://www.freecodecamp.org/news/software-engineering-interviews-744380f4f2af/)
 - [Intro to Behavioral Interviews](https://www.youtube.com/watch?v=PJKYqLP6MRE)
 - [Tips to get unstuck](https://www.byte-by-byte.com/stuck-on-coding-interview/)
+
+Number of questions by topic:
+![Questions Chart](https://raw.githubusercontent.com/lnogueir/interview-prep/main/images/leetcodeQuestionsChart.PNG)
