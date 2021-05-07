@@ -1,35 +1,28 @@
 '''
 Prompt:
-Write a function partition(array, pivot) that takes a non-empty array of numbers
-and a pivot point index and that will modify the array in-place and ensure
-that all elements in the left of pivot point are less than pivot point
+Write a function partition(array, left, right) that takes a non-empty array of numbers
+and boundaries and will modify the array in-place and ensure
+that all elements in the left of some pivot point are less than pivot point
 and all elements to the right are greater than the pivot point.
-Return the index of the pivot point after the condition is applied
+Return the index of the pivot point after the condition is applied.
 '''
 
+def partition(array, left, right):
+	lessThanOffset = -1 + left
+	pivotIdx = right
+	for greaterThanOffset in range(left, pivotIdx):
+		if array[greaterThanOffset] < array[pivotIdx]:
+			lessThanOffset += 1
+			array[lessThanOffset], array[greaterThanOffset] = array[greaterThanOffset], array[lessThanOffset]
+			
+	lessThanOffset += 1
+	array[lessThanOffset], array[pivotIdx] = array[pivotIdx], array[lessThanOffset]
+	
+	pivotIdx = lessThanOffset 
+	return pivotIdx
 
-def swap(array, i, j):
-  tmp = array[i]
-  array[i] = array[j]
-  array[j] = tmp
 
-def partition(array, pivotIdx):
-  pivotValue = array[pivotIdx]
-  swap(array, pivotIdx, len(array)-1)
-
-  partitionIdx = -1
-
-  i = partitionIdx
-  while i < len(array) - 1:
-    if array[i] < pivotValue:
-      partitionIdx += 1
-      swap(array, partitionIdx, i)
-    i += 1
-  
-  partitionIdx += 1
-  swap(array, partitionIdx, len(array) - 1)
-  return partitionIdx
-
-array = [5,2,3,8,6]
-partition(array, 0)
-print(array)
+if __name__ == '__main__':
+  array = [5,2,3,8,6]
+  partition(array, 0, len(array)-1)
+  print(array)
