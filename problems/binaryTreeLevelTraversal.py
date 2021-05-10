@@ -1,6 +1,6 @@
 '''
 Prompt:
-Given the oot of a binary tree, return the level order traversal of its nodes' values (from left to right, level by level).
+Given the root of a binary tree, return the level order traversal of its nodes' values (from left to right, level by level).
 '''
 # Definition for a binary tree node.
 class TreeNode:
