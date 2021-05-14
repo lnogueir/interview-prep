@@ -26,34 +26,34 @@ Output: 3
 '''
 
 def exploreIsland(grid, coord, visited):
-	i, j = coord
-	if coord in visited or grid[i][j] == "0":
-  	return
-  
-	visited.add(coord)
-  
+  i, j = coord
+  if coord in visited or grid[i][j] == "0":
+    return
+
+  visited.add(coord)
+
   if i < len(grid)-1: # Up
-  	exploreIsland(grid, (i+1, j), visited)
-  
+    exploreIsland(grid, (i+1, j), visited)
+
   if i > 0: # Down
-  	exploreIsland(grid, (i-1, j), visited)
-  
+    exploreIsland(grid, (i-1, j), visited)
+
   if j < len(grid[i])-1: # Right
-  	exploreIsland(grid, (i, j+1), visited)
+    exploreIsland(grid, (i, j+1), visited)
     
   if j > 0:  # Left
-  	exploreIsland(grid, (i, j-1), visited)
+    exploreIsland(grid, (i, j-1), visited)
 
 # Time: O(n*m), Space: O(n*m)
 def numIslands(grid):
-	visited = set([])
+  visited = set([])
   islandsCount = 0
-	for i in range(len(grid)):
-  	for j in range(len(grid[i])):
-    	coord = (i, j)
+  for i in range(len(grid)):
+    for j in range(len(grid[i])):
+      coord = (i, j)
       isWater = grid[i][j] == "0"
-    	if not isWater and coord not in visited:
-      	exploreIsland(grid, coord, visited)
+      if not isWater and coord not in visited:
+        exploreIsland(grid, coord, visited)
         islandsCount += 1
         
   return islandsCount
