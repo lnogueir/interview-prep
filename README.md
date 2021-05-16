@@ -2,6 +2,7 @@
 📝My solution to many coding challenges and implementation of the most popular data structures 💡
 
 Quick links:
+- [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/algorithms/tree/)
 - [Errichto Edu playlist](https://www.youtube.com/playlist?list=PLl0KD3g-oDOEbtmoKT5UWZ-0_JbyLnHPZ)
 - [Competitive Programmer's Handbook](https://cses.fi/book/book.pdf)
 - [Cracking the Coding Interview](https://cin.ufpe.br/~fbma/Crack/Cracking%20the%20Coding%20Interview%20189%20Programming%20Questions%20and%20Solutions.pdf)
