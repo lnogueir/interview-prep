@@ -3,6 +3,7 @@
 
 Quick links:
 - [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/algorithms/tree/)
+- [500 Coding Problems and Solutions](https://kingrayhan.medium.com/500-data-structures-and-algorithms-practice-problems-and-their-solutions-b45a83d803f0)
 - [Errichto Edu playlist](https://www.youtube.com/playlist?list=PLl0KD3g-oDOEbtmoKT5UWZ-0_JbyLnHPZ)
 - [Competitive Programmer's Handbook](https://cses.fi/book/book.pdf)
 - [Cracking the Coding Interview](https://cin.ufpe.br/~fbma/Crack/Cracking%20the%20Coding%20Interview%20189%20Programming%20Questions%20and%20Solutions.pdf)
