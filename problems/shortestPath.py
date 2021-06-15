@@ -12,7 +12,7 @@ def minimumPath(graph, v1, v2):
 
   queue = [v1]
   while len(queue) > 0:
-    v = queue.pop()
+    v = queue.pop(0)
     for neighbour in graph[v]:
       distances[neighbour] = min(distances[neighbour], distances[v] + 1)
       if not visited[neighbour]:
