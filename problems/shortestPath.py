@@ -22,13 +22,22 @@ def minimumPath(graph, v1, v2):
 
   return distances[v2]
 
-graph = [
+graph1 = [
   [1, 3],
   [0,3,2],
   [1],
   [0, 1]
 ]
 
-print(minimumPath(graph, 0, 3))
+graph2 = [
+  [1,2],
+  [2,3],
+  [1,3],
+  [4],
+  []
+]
+
+print(minimumPath(graph1, 0, 3))
+print(minimumPath(graph2, 0, 4))
 
 
