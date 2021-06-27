@@ -11,6 +11,7 @@ Quick links:
 - [Cracking the Coding Interview](https://cin.ufpe.br/~fbma/Crack/Cracking%20the%20Coding%20Interview%20189%20Programming%20Questions%20and%20Solutions.pdf)
 - [FreeCodeCamp interview info](https://www.freecodecamp.org/news/software-engineering-interviews-744380f4f2af/)
 - [Intro to Behavioral Interviews](https://www.youtube.com/watch?v=PJKYqLP6MRE)
+- [Problem Patterns](https://www.educative.io/courses/grokking-the-coding-interview)
 - [Tips to get unstuck](https://www.byte-by-byte.com/stuck-on-coding-interview/)
 
 Number of questions by topic:
