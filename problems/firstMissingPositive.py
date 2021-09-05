@@ -23,31 +23,43 @@ Ex:
 Constraints: Time Complexity O(n), Use Constant space O(1)
 '''
 
-# idea is: 
-# 1. make all the negative numbers be greater than n by taking abs and multiplying by (n+1)
-# 2. negate the value at the index of numbers <= n
-# 3. return first positive index found
+# Idea is:
+# Let n = len(array).
+# The max possible missing positive would be n + 1.
+# So we can discard all elements that are not in the range (1, n).
 
-def makeNonPositiveNumbersGreaterThanN(array, N):
-  for i in range(len(array)):
-    if array[i] <= 0:
-      array[i] = abs(array[i] - N)*(N+1)
-  
-def negateValueAtIndexOfNumbersLessEqN(array, N):
-  for i in range(len(array)):
-    if array[i] <= N:
-      if array[abs(array[i])-1] > 0:
-        array[abs(array[i])-1] *= -1
+def cleanUpArray(array):
+  n = len(array)
+  for i in range(n):
+    if array[i] > n or array[i] <= 0:
+      array[i] = 1
 
-def getFirstPositiveNumberIdx(array):
-  for i in range(len(array)):
+  return
+
+def negateIndexes(array):
+  n = len(array)
+  for i in range(n):
+    idxMap = abs(array[i])
+    if array[idxMap-1] < 0:
+      continue
+
+    array[idxMap-1] *= -1
+
+
+def firstPositiveIndex(array):
+  n = len(array)
+  for i in range(n):
     if array[i] > 0:
       return i + 1
-
-  return len(array) + 1
+  
+  return n + 1
 
 def findSmallestPositiveInteger(array):
-  N = len(array)
-  makeNonPositiveNumbersGreaterThanN(array, N)
-  negateValueAtIndexOfNumbersLessEqN(array, N)
-  return getFirstPositiveNumberIdx(array)
+  if 1 not in array:
+    return 1
+  
+  cleanUpArray(array)
+  negateIndexes(array)
+  return firstPositiveIndex(array)
+
+print(findSmallestPositiveInteger([7,8,9,11,12]))
